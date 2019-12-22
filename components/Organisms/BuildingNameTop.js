@@ -13,19 +13,18 @@ function BuildingNameTop(props) {
 }
 
 const Wrapper = styled.div`
-  display: flex
+  display: flex;
   flex-direction: row;
-  margin:0 auto;
+  margin: 0 auto;
   align-items: center;
-  overflow: auto;
-  position: "fixed";
+  text-align: center;
 `;
 
-const BuildingName = styled.div`
-  ispaly: flex;
+const BuildingName = styled.p`
+  dispaly: flex;
   font-size: 1.8rem;
-  font-weight: bold;
-  text-align: center;
+  font-family: S-CoreDream-6;
   color: #000000;
+  margin: 0;
 `;
 export default BuildingNameTop;

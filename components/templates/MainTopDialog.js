@@ -8,6 +8,14 @@ import TodayText from "../Molecules/Message";
 export default function TopDialog(props) {
   const { timePeriod, month, day, textIndex } = props;
 
+  const [today, setToday] = useState(
+    new Date(new Date().setDate(day)).getDay()
+  );
+  const week = new Array("일", "월", "화", "수", "목", "금", "토");
+  const [available, setAvailable] = useState(true);
+  useEffect(() => {
+    setToday(new Date(new Date().setDate(day)).getDay());
+  }, [day]);
   return (
     <Wrapper>
       <Icon>
@@ -31,13 +39,26 @@ export default function TopDialog(props) {
             }}
           />
 
-          <div style={{ fontSize: "13px", color: "#707070", padding: "10px" }}>
-            {month}월{day}일
+          <div
+            style={{
+              fontSize: "1.4rem",
+              fontFamily: "S-CoreDream-7",
+              color: "#707070",
+              padding: "10px"
+            }}
+          >
+            {month}월{day}일 {week[today]}
           </div>
 
           <RightIcon
             onClick={() => {
-              props.setDay(day + 1);
+              if (available) {
+                props.setDay(day + 1);
+              } else setAvailable(true);
+
+              if (today === 6 && day > new Date().getDate()) {
+                setAvailable(false);
+              }
             }}
           />
         </ButtonWrapper>
@@ -45,14 +66,15 @@ export default function TopDialog(props) {
 
       <div
         style={{
-          width: "83%",
-          height: "4.98rem",
+          width: "30.7rem",
+          height: "4.81rem",
           position: "relative",
           backgroundImage: "url(/bubble.png)",
           backgroundSize: "100%",
           display: "flex",
           flexDirection: "row",
-          paddingLeft: "1rem"
+          paddingLeft: "1rem",
+          textAlign: "center"
         }}
       >
         <Text style={{ marginTop: "0.1rem" }}>{TodayText[textIndex]}</Text>
@@ -66,12 +88,13 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   overflow: auto;
-
   width: 100%;
+  max-width: 36rem;
 `;
 
-const Text = styled.div`
+const Text = styled.p`
   font-size: 13px;
+  fontfamily: S-CoreDream-6;
   color: #ffffff;
   padding-left: 4rem;
   padding-top: 1.7rem;
@@ -90,4 +113,5 @@ const ButtonWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   flex-direction: row;
+  margintop: 1rem;
 `;

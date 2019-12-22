@@ -9,7 +9,7 @@ export default function FacilButton(props) {
   return (
     <Wrapper>
       <Link
-        href={`/BuildingMenus?id=${props.id}&month=${props.month}&day=${props.day}&timePeriod=${props.timePeriod}`}
+        href={`/BuildingMenus?id=${props.id}&month=${props.month}&day=${props.day}&timePeriod=${props.timePeriod}&today=${props.today}`}
       >
         <a style={{ textDecoration: "none" }}>
           <BuildingWrapper>
@@ -18,7 +18,7 @@ export default function FacilButton(props) {
               .slice(0, Math.min(props.sikdans.length, 3))
               .map((value, index) => (
                 <MenuList key={index}>
-                  <StarIcon style={{ paddingRight: "0.6rem" }} />
+                  <StarIcon style={{ paddingRight: "0.4rem" }} />
                   <Text>
                     <Average>{value.avg_rating.toFixed(1)}</Average>
 
@@ -55,11 +55,8 @@ const BuildingName = styled.div`
   padding-left: 1.9rem;
   object-fit: contain;
   font-size: 1.4rem;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
+  font-family: S-CoreDream-6;
   line-height: 1.29;
-  letter-spacing: normal;
   text-align: left;
   color: #000000;
 `;
@@ -67,10 +64,10 @@ const BuildingName = styled.div`
 const MenuList = styled.div`
   display: flex;
   flex-direction: row;
+  height:2.06rem
   border: none;
   align-items: center;
-  padding-left: 2.06rem;
-  padding-bottom: 1rem;
+  margin: 0.5rem 2.06rem 1rem 1rem;
 `;
 const Text = styled.div`
   display: flex;
@@ -80,11 +77,8 @@ const MenuName = styled.div`
   height: 1.7rem;
   object-fit: contain;
   font-size: 1.4rem;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
   line-height: 1.5;
-  letter-spacing: normal;
+  font-family: S-CoreDream-5;
   text-align: left;
   color: #000000;
 `;
@@ -92,22 +86,18 @@ const Average = styled.div`
   width: 4rem;
   height: 1.7rem;
   object-fit: contain;
+  font-family: S-CoreDream-4;
   font-size: 1.4rem;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
   line-height: 1.5;
-  letter-spacing: normal;
   text-align: left;
   color: #000000;
 `;
 const MoreText = styled.p`
   font-size: 0.9rem;
   font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
   line-height: 1.11;
-  letter-spacing: normal;
   color: #707070;
-  margin: 0 0.5rem 0.9rem 27rem;
+  text-align: right;
+  font-family: S-CoreDream-5;
+  margin: 1.3rem;
 `;
